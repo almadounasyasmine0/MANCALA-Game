@@ -189,7 +189,7 @@ def test_scenarios_specifiques():
     extra = board.doMove('player1', 'A')
     print("\n   Après capture (player1 joue A):")
     board.display()
-    print(f"   Store1 devrait avoir 5 graines (1+3+1): {board.board['Store1']}")
+    print(f"   stor1 devrait avoir 5 graines (1+3+1): {board.board['stor1']}")
     
     # Scénario 2: Tour supplémentaire
     print("\n2. Test de tour supplémentaire:")
@@ -197,7 +197,7 @@ def test_scenarios_specifiques():
     # Player1 joue D (qui a 4 graines)
     extra = board2.doMove('player1', 'D')
     print(f"   Player1 joue D -> tour supplémentaire? {extra}")
-    print("   (Doit être True si dernière graine dans Store1)")
+    print("   (Doit être True si dernière graine dans stor1)")
     
     # Scénario 3: Jeu terminé
     print("\n3. Test de fin de jeu:")
