@@ -1,10 +1,7 @@
 import copy
 
 class Game:
-    """
-    Classe Game représentant un nœud dans l'arbre de recherche Minimax.
-    Conforme à 100% aux spécifications du projet Mancala.
-    """
+ 
     
     # Constantes pour identifier les joueurs dans l'algorithme Minimax
     COMPUTER = 1      # Joueur MAX dans Minimax (l'ordinateur)
@@ -34,12 +31,7 @@ class Game:
             }
     
     def gameOver(self):
-        """
-        REQUIS: Vérifie si le jeu est terminé et collecte les graines restantes.
-        
-        Returns:
-            bool: True si le jeu est terminé, False sinon
-        """
+       
         # Vérifie si player1 a encore des mouvements possibles
         player1_has_moves = len(self.state.possibleMoves('player1')) > 0
         
@@ -50,10 +42,9 @@ class Game:
         if player1_has_moves and player2_has_moves:
             return False
         
-        # Si un joueur n'a plus de mouvements, le jeu est terminé
-        # On collecte les graines restantes selon les règles
+       
         
-        # On suppose que MancalaBoard a un attribut 'board' (dictionnaire)
+       
         if hasattr(self.state, 'board'):
             # Cas 1: Player1 n'a plus de graines
             if not player1_has_moves:
@@ -80,12 +71,7 @@ class Game:
         return True
     
     def findWinner(self):
-        """
-        REQUIS: Détermine le gagnant de la partie et son score.
         
-        Returns:
-            tuple: (gagnant, différence_score)
-        """
         # Vérifie d'abord si le jeu est terminé SANS appeler gameOver()
         player1_has_moves = len(self.state.possibleMoves('player1')) > 0
         player2_has_moves = len(self.state.possibleMoves('player2')) > 0
@@ -138,23 +124,17 @@ class Game:
         return winner, abs(score_difference)
     
     def evaluate(self):
-        """
-        REQUIS: Fonction d'évaluation pour l'algorithme Minimax.
-        
-        Returns:
-            int: value(n) = nbSeedsStore(playerSide[COMPUTER]) 
-                         - nbSeedsStore(playerSide[HUMAN])
-        """
+     
         # Récupère les scores depuis le plateau
         if hasattr(self.state, 'board'):
             board = self.state.board
             store1_seeds = board.get('Store1', 0)
             store2_seeds = board.get('Store2', 0)
         else:
-            # Fallback pour les tests
+          
             store1_seeds = store2_seeds = 0
         
-        # Applique l'équation selon la configuration
+       
         if self.playerSide[self.COMPUTER] == 'player1':
             # Ordinateur = player1 = Store1
             # Humain = player2 = Store2
@@ -163,3 +143,4 @@ class Game:
             # Ordinateur = player2 = Store2
             # Humain = player1 = Store1
             return store2_seeds - store1_seeds
+
