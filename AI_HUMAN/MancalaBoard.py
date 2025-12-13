@@ -14,8 +14,8 @@ class MancalaBoard :
                         'J': 4,
                         'K': 4,
                         'L': 4,
-                        '1': 0,
-                        '2': 0
+                        1: 0,
+                        2: 0
                     }
         self.player1_pits=('A', 'B', 'C', 'D', 'E', 'F')
         self.player2_pits=('G', 'H', 'I', 'J', 'K', 'L')
@@ -97,3 +97,23 @@ class MancalaBoard :
             return player  # rejoue
 
         return 2 if player == 1 else 1
+    
+    def display(self):
+        
+
+        # Player 2 (haut)
+        print("        Player 2")
+        print("   ", end="")
+        for pit in self.player2_pits:
+            print(f"[{self.board[pit]:2}]", end=" ")
+        print()
+
+        # Stores
+        print(f"[{self.board[2]:2}]----------------------------[{self.board[1]:2}]")
+
+        # Player 1 (bas)
+        print("   ", end="")
+        for pit in self.player1_pits:
+            print(f"[{self.board[pit]:2}]", end=" ")
+        print()
+        print("        Player 1\n")
