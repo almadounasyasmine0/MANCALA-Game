@@ -14,8 +14,8 @@ class MancalaBoard :
                         'J': 4,
                         'K': 4,
                         'L': 4,
-                        1: 0,
-                        2: 0
+                        'stor1': 0,
+                        'stor2': 0
                     }
         self.player1_pits=('A', 'B', 'C', 'D', 'E', 'F')
         self.player2_pits=('G', 'H', 'I', 'J', 'K', 'L')
@@ -34,21 +34,22 @@ class MancalaBoard :
                         'L': 'F'
                     }
         self.next_pit = {
-                        'A': 'B',
-                        'B': 'C',
-                        'C': 'D',
-                        'D': 'E',
-                        'E': 'F', 
-                        'F': 1,
-                        1: 'L',
-                        'L': 'K',
-                        'K': 'J',
-                        'J': 'I',
-                        'I': 'H',
-                        'H': 'G',
-                        'G': 2,
-                        2: 'A'
-                        }
+    'A': 'B',
+    'B': 'C',
+    'C': 'D',
+    'D': 'E',
+    'E': 'F', 
+    'F': 'stor1',
+    'stor1': 'L',
+    'L': 'K',
+    'K': 'J',
+    'J': 'I',
+    'I': 'H',
+    'H': 'G',
+    'G': 'stor2',
+    'stor2': 'A'
+}
+
 
     pass
 
@@ -69,9 +70,9 @@ class MancalaBoard :
             current = self.next_pit[current]
 
             # Ignorer le store adverse
-            if player == 1 and current == 2:
+            if player == 1 and current == 'stor2':
                 continue
-            if player == 2 and current == 1:
+            if player == 2 and current == 'stor1':
                 continue
 
             self.board[current] += 1
@@ -109,7 +110,7 @@ class MancalaBoard :
         print()
 
         # Stores
-        print(f"[{self.board[2]:2}]----------------------------[{self.board[1]:2}]")
+        print(f"[{self.board['stor2']:2}]----------------------------[{self.board['stor1']:2}]")
 
         # Player 1 (bas)
         print("   ", end="")
