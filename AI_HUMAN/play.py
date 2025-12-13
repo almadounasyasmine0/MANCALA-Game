@@ -2,11 +2,7 @@ import copy
 import math
 
 class Play:
-    """
-    Classe principale qui gère le déroulement d'une partie de Mancala.
-    Contient les fonctions pour les tours humain et ordinateur,
-    ainsi que l'algorithme Minimax avec élagage Alpha-Beta.
-    """
+    
     
     # Constantes pour les joueurs dans Minimax
     COMPUTER = 1    # MAX player
@@ -94,19 +90,7 @@ class Play:
         return True
     
     def MinimaxAlphaBetaPruning(self, game, player, depth, alpha, beta):
-        """
-        Fonction EXACTEMENT comme le pseudo-code fourni.
-        
-        # game est une instance de la classe Game et player = MAX or MIN
-        def MinimaxAlphaBetaPruning(game, player, depth, alpha, beta):
-            if game.gameOver() or depth == 1:
-                bestValue = game.evaluate()
-                return bestValue, None
-            if player == MAX:
-                # ... code pour MAX ...
-            else:
-                # ... code pour MIN ...
-        """
+     
         # CONDITION D'ARRÊT EXACTEMENT comme le pseudo-code
         if game.gameOver() or depth == 1:  # <-- depth == 1, PAS 0
             bestValue = game.evaluate()
@@ -117,28 +101,26 @@ class Play:
             bestValue = -math.inf
             bestPit = None
             
-            # Récupère les mouvements possibles
-            # Note: Utilise EXACTEMENT game.playerSide[player] comme dans le pseudo-code
+  
             possible_moves = game.state.possibleMoves(game.playerSide[player])
             
             for pit in possible_moves:
                 # Crée une copie profonde
-                child_game = copy.deepcopy(game)  # copy(game) dans pseudo-code
+                child_game = copy.deepcopy(game) 
                 
-                # Exécute le mouvement - syntaxe EXACTE comme pseudo-code
+                
                 child_game.state.doMove(game.playerSide[player], pit)
                 
-                # Appel récursif - paramètres EXACTS comme pseudo-code
-                # Note: -player, pas self.HUMAN
+            
                 value, _ = self.MinimaxAlphaBetaPruning(
                     child_game, 
-                    -player,           # <-- -player, PAS self.HUMAN
+                    -player,          
                     depth - 1, 
                     alpha, 
                     beta
                 )
                 
-                # Met à jour la meilleure valeur
+               
                 if value > bestValue:
                     bestValue = value
                     bestPit = pit
@@ -170,7 +152,7 @@ class Play:
                 # Appel récursif
                 value, _ = self.MinimaxAlphaBetaPruning(
                     child_game, 
-                    -player,           # <-- -player, PAS self.COMPUTER
+                    -player,          
                     depth - 1, 
                     alpha, 
                     beta
@@ -183,7 +165,7 @@ class Play:
                 
                 # Élagage Alpha-Beta
                 if bestValue <= alpha:
-                    break  # Coupure Alpha
+                    break  
                 
                 if bestValue < beta:
                     beta = bestValue
@@ -230,3 +212,4 @@ class Play:
                     current_turn = self.HUMAN
         
         print("\nFin de la partie!")
+
