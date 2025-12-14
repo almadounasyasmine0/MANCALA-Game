@@ -40,9 +40,16 @@ class Game:
             return ("Player 2", store2)
         else:
             return ("Draw", store1)
-    def evaluate(self):
-    
-        return (
-            self.state.board['stor1']
-            - self.state.board['stor2']
-        )
+    def evaluate(self,player):
+        if player==1:
+            return (
+                self.state.board['stor1']
+                - self.state.board['stor2']
+                + sum(self.state.board[p] for p in self.state.player1_pits)
+            )
+        else:
+            return (
+                self.state.board['stor1']
+                - self.state.board['stor2']
+                - sum(self.state.board[p] for p in self.state.player2_pits)
+            )

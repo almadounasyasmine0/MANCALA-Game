@@ -32,7 +32,7 @@ class playAI_AI:
     def MinimaxAlphaBetaPruning(self, game, player, depth, alpha, beta):
 
         if game.gameOver() or depth == 1:
-            return game.evaluate(), None
+            return game.evaluate(player), None
 
         if player == self.MAX:
             bestValue = -math.inf
