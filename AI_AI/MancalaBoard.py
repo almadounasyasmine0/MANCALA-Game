@@ -21,7 +21,7 @@ class MancalaBoard :
         self.player2_pits=('G', 'H', 'I', 'J', 'K', 'L')
         self.opposite_pits={
                         'A': 'G',
-                        'B':' H',
+                        'B': 'H',
                         'C': 'I',
                         'D': 'J',
                         'E': 'K',
@@ -34,24 +34,24 @@ class MancalaBoard :
                         'L': 'F'
                     }
         self.next_pit = {
-    'A': 'B',
-    'B': 'C',
-    'C': 'D',
-    'D': 'E',
-    'E': 'F', 
-    'F': 'stor1',
-    'stor1': 'L',
-    'L': 'K',
-    'K': 'J',
-    'J': 'I',
-    'I': 'H',
-    'H': 'G',
-    'G': 'stor2',
-    'stor2': 'A'
-}
+                        'A': 'B',
+                        'B': 'C',
+                        'C': 'D',
+                        'D': 'E',
+                        'E': 'F', 
+                        'F': 'stor1',
+                        'stor1': 'L',
+                        'L': 'K',
+                        'K': 'J',
+                        'J': 'I',
+                        'I': 'H',
+                        'H': 'G',
+                        'G': 'stor2',
+                        'stor2': 'A'
+                    }
 
 
-    pass
+   
 
     def possibleMoves(self, player):
         if player == 1:
@@ -82,14 +82,14 @@ class MancalaBoard :
         if player == 1 and current in self.player1_pits and self.board[current] == 1:
             opp = self.opposite_pits[current]
             if self.board[opp] > 0:
-                self.board[1] += self.board[opp] + 1
+                self.board['stor1'] += self.board[opp] + 1
                 self.board[current] = 0
                 self.board[opp] = 0
 
         if player == 2 and current in self.player2_pits and self.board[current] == 1:
             opp = self.opposite_pits[current]
             if self.board[opp] > 0:
-                self.board[2] += self.board[opp] + 1
+                self.board['stor2'] += self.board[opp] + 1
                 self.board[current] = 0
                 self.board[opp] = 0
 
