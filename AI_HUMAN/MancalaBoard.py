@@ -94,7 +94,7 @@ class MancalaBoard :
                 self.board[opp] = 0
 
         # Tour supplémentaire
-        if (player == 1 and current == 1) or (player == 2 and current == 2):
+        if (player == 1 and current ==  'stor1') or (player == 2 and current ==  'stor2'):
             return player  # rejoue
 
         return 2 if player == 1 else 1
